@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF Kucing dan Prettycaca</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .gif-container img {
+            width: 300px;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .text-container {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff69b4;
+            opacity: 0;
+            transition: opacity 1s;
+            margin-top: 20px;
+        }
+
+        .start-button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .start-button:hover {
+            background-color: #ff4171;
+        }
+
+        .notification {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .show-text, .show-gif {
+            opacity: 1;
+        }
+
+        /* CSS untuk menyembunyikan audio controls */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Tombol Start -->
+        <button class="start-button" id="startButton">Start</button>
+
+        <!-- Notifikasi -->
+        <div class="notification" id="notification">Kamu mau liat caca ngoding?</div>
+
+        <!-- GIF Kucing dan Teks Prettycaca -->
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kucing GIF">
+        </div>
+        <div class="text-container" id="prettyText">prettycaca</div>
+
+        <!-- Audio untuk Musik Taylor Swift -->
+        <audio id="taylorMusic" controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        // Ambil elemen-elemen
+        const startButton = document.getElementById('startButton');
+        const notification = document.getElementById('notification');
+        const gifContainer = document.querySelector('.gif-container img');
+        const textContainer = document.getElementById('prettyText');
+        const taylorMusic = document.getElementById('taylorMusic');
+
+        // Event listener untuk tombol start
+        startButton.addEventListener('click', function() {
+            // Sembunyikan tombol setelah diklik
+            startButton.style.display = 'none';
+
+            // Tampilkan notifikasi
+            notification.style.display = 'block';
+
+            // Setelah 2 detik, tampilkan GIF dan teks bersamaan
+            setTimeout(function() {
+                notification.style.display = 'none'; // Sembunyikan notifikasi
+                gifContainer.style.opacity = 1; // Tampilkan GIF
+                textContainer.style.opacity = 1; // Tampilkan teks
+                
+                // Putar musik Taylor Swift
+                taylorMusic.play();
+            }, 2000); // Tampilkan GIF dan teks setelah 2 detik
+        });
+    </script>
+</body>
+</html>
